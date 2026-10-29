@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto: Raio-X da Juventude</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+    <style>
+        :root {
+            --bg-page: #f4f7fb;
+            --bg-soft: #eef3ff;
+            --card: rgba(255,255,255,0.82);
+            --line: rgba(148,163,184,0.18);
+            --text: #122033;
+            --muted: #5d6b82;
+            --primary: #1d4ed8;
+            --primary-strong: #172554;
+            --secondary: #0f766e;
+            --amber: #f59e0b;
+            --rose: #ef4444;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at top left, rgba(96, 165, 250, 0.15), transparent 30%),
+                radial-gradient(circle at bottom right, rgba(14, 165, 233, 0.12), transparent 30%),
+                var(--bg-page);
+            color: var(--text);
+        }
+
+        .glass-card {
+            background: var(--card);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--line);
+            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+        }
+
+        .eyebrow {
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: rgba(191, 219, 254, 0.9);
+        }
+
+        .metric-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(241,245,249,0.88));
+            border: 1px solid rgba(148,163,184,0.2);
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
+        }
+
+        .metric-card strong {
+            font-size: clamp(1.8rem, 2vw, 2.5rem);
+            line-height: 1;
+            letter-spacing: -0.05em;
+        }
+    </style>
+</head>
+<body class="text-slate-800 font-sans antialiased">
+
+    <header class="bg-gradient-to-r from-slate-900 via-blue-900 to-indigo-900 text-white shadow-xl shadow-blue-950/20">
+        <div class="container mx-auto px-6 py-8 md:py-10 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div>
+                <p class="eyebrow mb-3">Relatório executivo · Juventude e desenvolvimento</p>
+                <h1 class="text-3xl md:text-5xl font-black tracking-tight">Raio-X da Juventude</h1>
+                <p class="text-blue-100/90 text-sm md:text-base mt-3 max-w-2xl">Análise de condições de vida, socioeconômicas e educacionais para orientar ações sociais e políticas públicas mais eficazes.</p>
+            </div>
+            <div class="flex flex-wrap gap-2 md:justify-end">
+                <span class="bg-white/10 border border-white/20 px-3 py-1.5 rounded-full text-[11px] font-semibold tracking-wide">Entrega: Hoje</span>
+                <span class="bg-emerald-500/20 border border-emerald-400/30 px-3 py-1.5 rounded-full text-[11px] font-semibold tracking-wide">Nota: 50 pontos</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-8 md:py-12 max-w-6xl">
+        <section class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-10">
+            <article class="metric-card rounded-2xl p-5">
+                <span class="block text-[11px] uppercase tracking-[0.14em] font-bold text-slate-500 mb-2">Perfil</span>
+                <strong class="block text-slate-900">250</strong>
+                <p class="text-sm text-slate-600 mt-2">jovens mapeados</p>
+            </article>
+            <article class="metric-card rounded-2xl p-5">
+                <span class="block text-[11px] uppercase tracking-[0.14em] font-bold text-slate-500 mb-2">Internet</span>
+                <strong class="block text-sky-700">72%</strong>
+                <p class="text-sm text-slate-600 mt-2">com acesso</p>
+            </article>
+            <article class="metric-card rounded-2xl p-5">
+                <span class="block text-[11px] uppercase tracking-[0.14em] font-bold text-slate-500 mb-2">Foco</span>
+                <strong class="block text-emerald-700">8,4h</strong>
+                <p class="text-sm text-slate-600 mt-2">média de estudo semanal</p>
+            </article>
+            <article class="metric-card rounded-2xl p-5">
+                <span class="block text-[11px] uppercase tracking-[0.14em] font-bold text-slate-500 mb-2">Risco</span>
+                <strong class="block text-amber-600">48%</strong>
+                <p class="text-sm text-slate-600 mt-2">baixa perspectiva de futuro</p>
+            </article>
+        </section>
+
+        <section class="glass-card rounded-3xl p-7 md:p-8 mb-10">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-blue-100 text-blue-700 text-lg">📌</span>
+                <h2 class="text-xl md:text-2xl font-bold text-slate-900">Objetivo do projeto</h2>
+            </div>
+            <p class="text-slate-600 leading-relaxed text-base md:text-lg max-w-4xl">
+                O objetivo desta análise é diagnosticar as condições de vida, socioeconômicas e educacionais de jovens por meio da coleta e tratamento de dados, gerando evidências acionáveis para informar políticas públicas, intervenções sociais e estratégias de melhoria do ensino e do bem-estar juvenil.
+            </p>
+        </section>
+
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <div class="glass-card rounded-3xl p-6 md:p-7">
+                <h3 class="font-bold text-lg md:text-xl text-indigo-700 mb-5 flex items-center gap-2">
+                    <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-100 text-indigo-700">📋</span>
+                    1. Métricas coletadas
+                </h3>
+                <div class="space-y-4 text-sm md:text-[15px] text-slate-600">
+                    <div>
+                        <strong class="text-slate-800 block mb-1">Socioeconômicas:</strong>
+                        Renda familiar, acesso a saneamento, habitação e internet.
+                    </div>
+                    <div>
+                        <strong class="text-slate-800 block mb-1">Educacionais:</strong>
+                        Taxa de frequência escolar, infraestrutura da escola e horas de estudo.
+                    </div>
+                    <div>
+                        <strong class="text-slate-800 block mb-1">Qualidade de vida:</strong>
+                        Tempo de deslocamento, lazer, saúde mental e perspectiva de futuro.
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card rounded-3xl p-6 md:p-7">
+                <h3 class="font-bold text-lg md:text-xl text-indigo-700 mb-5 flex items-center gap-2">
+                    <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-100 text-indigo-700">🛠️</span>
+                    2. Tratamento e ferramentas
+                </h3>
+                <p class="text-sm md:text-[15px] text-slate-600 mb-5 leading-relaxed">
+                    O pipeline de análise foi executado em <strong>Python</strong> com uso do <strong>Google Colab</strong>, incluindo limpeza de dados, remoção de duplicatas, tratamento de valores ausentes e consolidação de indicadores para apoio à tomada de decisão.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-slate-100 text-slate-700 text-xs px-3 py-1.5 rounded-lg font-medium border border-slate-200">Python</span>
+                    <span class="bg-slate-100 text-slate-700 text-xs px-3 py-1.5 rounded-lg font-medium border border-slate-200">pandas &amp; numpy</span>
+                    <span class="bg-slate-100 text-slate-700 text-xs px-3 py-1.5 rounded-lg font-medium border border-slate-200">Plotly.js</span>
+                    <span class="bg-slate-100 text-slate-700 text-xs px-3 py-1.5 rounded-lg font-medium border border-slate-200">GitHub Pages</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-14">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-sky-100 text-sky-700 text-lg">📊</span>
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-900">Painel de análise exploratória</h2>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="glass-card p-6 rounded-3xl">
+                    <h3 class="font-bold text-slate-800 text-sm md:text-base mb-1">Acesso à Internet vs. horas de estudo</h3>
+                    <p class="text-xs text-slate-500 mb-4">Distribuição do tempo de dedicação semanal</p>
+                    <div id="chart-internet" class="w-full h-72"></div>
+                </div>
+                <div class="glass-card p-6 rounded-3xl">
+                    <h3 class="font-bold text-slate-800 text-sm md:text-base mb-1">Perspectiva de futuro vs. renda familiar</h3>
+                    <p class="text-xs text-slate-500 mb-4">Mapeamento da vulnerabilidade juvenil</p>
+                    <div id="chart-renda" class="w-full h-72"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-slate-900 text-white rounded-[28px] p-8 md:p-12 shadow-2xl shadow-slate-900/15">
+            <div class="max-w-2xl mx-auto text-center mb-10">
+                <span class="text-blue-300 text-[11px] font-bold uppercase tracking-[0.18em] bg-blue-900/40 px-3 py-1.5 rounded-full">Estratégia</span>
+                <h2 class="text-2xl md:text-3xl font-bold mt-4">Propostas de impacto e intervenção</h2>
+                <p class="text-slate-400 text-sm md:text-base mt-3">Soluções estruturadas a partir das disparidades observadas na base de dados</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-slate-800 border border-slate-700/60 p-6 rounded-2xl hover:border-blue-500/60 transition-all duration-200 hover:-translate-y-1">
+                    <div class="text-3xl mb-3">🌐</div>
+                    <h3 class="text-base font-bold text-white mb-2">Inclusão digital</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Ampliação de polos comunitários de estudo com internet de qualidade e equipamentos para jovens em situação de vulnerabilidade socioeconômica.
+                    </p>
+                </div>
+                <div class="bg-slate-800 border border-slate-700/60 p-6 rounded-2xl hover:border-blue-500/60 transition-all duration-200 hover:-translate-y-1">
+                    <div class="text-3xl mb-3">🧠</div>
+                    <h3 class="text-base font-bold text-white mb-2">Apoio socioemocional</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Programas de mentoria, acolhimento psicossocial e acompanhamento escolar para reduzir evasão, isolamento e baixa motivação.
+                    </p>
+                </div>
+                <div class="bg-slate-800 border border-slate-700/60 p-6 rounded-2xl hover:border-blue-500/60 transition-all duration-200 hover:-translate-y-1">
+                    <div class="text-3xl mb-3">🚀</div>
+                    <h3 class="text-base font-bold text-white mb-2">Ensino do futuro</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Cursos de capacitação em habilidades digitais e tecnológicas para ampliar oportunidades de inserção no mercado de trabalho.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-100 border-t border-slate-200 mt-16 text-center py-6 text-xs text-slate-500">
+        <p>Projeto Raio-X da Juventude — Relatório Executivo para Gestores Públicos</p>
+    </footer>
+
+    <script>
+        const horasComInternet = [2, 5, 6, 7, 8, 9, 10, 11, 7, 8, 9, 12, 6, 10, 8, 9, 11, 7];
+        const horasSemInternet = [1, 2, 2, 3, 3, 4, 4, 5, 2, 3, 4, 3, 2, 4, 3, 2, 1, 2];
+
+        const traceComNet = {
+            y: horasComInternet,
+            name: 'Acesso à Internet: Sim',
+            type: 'box',
+            boxpoints: false,
+            quartilemethod: 'linear',
+            boxmean: true,
+            line: { color: '#4f46e5', width: 2 },
+            marker: { color: '#4f46e5', size: 6, line: { color: '#312e81', width: 1 } },
+            hoverlabel: { bgcolor: '#1e1b4b' },
+            hovertemplate: '%{y:.0f} horas <extra>Com internet</extra>'
+        };
+
+        const traceSemNet = {
+            y: horasSemInternet,
+            name: 'Acesso à Internet: Não',
+            type: 'box',
+            boxpoints: false,
+            quartilemethod: 'linear',
+            boxmean: true,
+            line: { color: '#ef4444', width: 2 },
+            marker: { color: '#ef4444', size: 6, line: { color: '#991b1b', width: 1 } },
+            hoverlabel: { bgcolor: '#7f1d1d' },
+            hovertemplate: '%{y:.0f} horas <extra>Sem internet</extra>'
+        };
+
+        const internetLayout = {
+            margin: { t: 20, b: 40, l: 55, r: 20 },
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            font: { family: 'Segoe UI, sans-serif', color: '#334155' },
+            legend: { orientation: 'h', y: 1.2, x: 0.02, font: { size: 11 } },
+            yaxis: {
+                title: 'Horas de estudo por semana',
+                titlefont: { size: 11 },
+                gridcolor: 'rgba(148, 163, 184, 0.18)',
+                zeroline: false,
+                ticklen: 4
+            },
+            xaxis: { showticklabels: false, zeroline: false },
+            hovermode: 'closest'
+        };
+
+        Plotly.newPlot('chart-internet', [traceComNet, traceSemNet], internetLayout, { responsive: true, displayModeBar: false });
+
+        const categorias = ['Até 1 SM', '1 a 2 SM', 'Mais de 2 SM'];
+        const traceAlta = {
+            x: categorias,
+            y: [20, 35, 48],
+            name: 'Perspectiva Alta',
+            type: 'bar',
+            marker: { color: '#10b981', line: { color: '#047857', width: 1.2 } },
+            text: ['20%', '35%', '48%'],
+            textposition: 'inside',
+            textfont: { color: '#ecfdf5', size: 11 },
+            hovertemplate: '%{x}<br>Perspectiva Alta: %{y}%<extra></extra>'
+        };
+
+        const traceBaixa = {
+            x: categorias,
+            y: [80, 65, 52],
+            name: 'Perspectiva Média/Baixa',
+            type: 'bar',
+            marker: { color: '#f59e0b', line: { color: '#b45309', width: 1.2 } },
+            text: ['80%', '65%', '52%'],
+            textposition: 'inside',
+            textfont: { color: '#fff7ed', size: 11 },
+            hovertemplate: '%{x}<br>Perspectiva Média/Baixa: %{y}%<extra></extra>'
+        };
+
+        const rendaLayout = {
+            barmode: 'stack',
+            margin: { t: 20, b: 50, l: 55, r: 20 },
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            font: { family: 'Segoe UI, sans-serif', color: '#334155' },
+            legend: { orientation: 'h', y: 1.2, x: 0.02, font: { size: 11 } },
+            xaxis: {
+                title: 'Faixa de renda familiar',
+                titlefont: { size: 11 },
+                tickfont: { size: 11 },
+                gridcolor: 'rgba(148, 163, 184, 0.18)'
+            },
+            yaxis: {
+                title: 'Distribuição (%)',
+                titlefont: { size: 11 },
+                gridcolor: 'rgba(148, 163, 184, 0.18)',
+                rangemode: 'tozero'
+            },
+            hovermode: 'closest'
+        };
+
+        Plotly.newPlot('chart-renda', [traceAlta, traceBaixa], rendaLayout, { responsive: true, displayModeBar: false });
+
+        window.addEventListener('resize', function () {
+            Plotly.Plots.resize('chart-internet');
+            Plotly.Plots.resize('chart-renda');
+        });
+    </script>
+</body>
+</html>
